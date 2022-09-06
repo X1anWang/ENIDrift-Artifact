@@ -5,5 +5,9 @@ ENIDrift is a fast and adaptive ensemble system for network intrusion detection 
 
 # Artifact Check-list
 
+# Structure
+
+# Experiment
+
 # Contact
 If you have any questions about ENIDrift, please send emails to Xian Wang (xwanggj@connect.hku.hk).
