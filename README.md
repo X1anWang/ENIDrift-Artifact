@@ -10,4 +10,4 @@ ENIDrift is a fast and adaptive ensemble system for network intrusion detection 
 # Experiment
 
 # Contact
-If you have any questions about ENIDrift, please send emails to Xian Wang (xwanggj@connect.hku.hk).
+If you have any questions about ENIDrift, please feel free to contact Xian (xwanggj@connect.hku.hk).
