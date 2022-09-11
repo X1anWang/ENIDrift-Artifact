@@ -12,8 +12,8 @@ class G_index():
         self.lamda = 0.3
         self.round = 0
         self.num_simulation = num_simulation
-        self.R_idx_last = None
-        self.R_idx_cur = None
+        self.G_idx_last = None
+        self.G_idx_cur = None
         self.data_store = array([])
         self.data_test = array([])
         self.data_train = array([])
@@ -32,8 +32,8 @@ class G_index():
             self.time_try_retrain = 0
             return 'Training'
         
-        if self.R_idx_last is None:
-            self.R_idx_last = self.R_idx(x)
+        if self.G_idx_last is None:
+            self.G_idx_last = self.G_idx(x)
             self.data_store = x
             return 'Initialize G-idx'
         
@@ -42,11 +42,11 @@ class G_index():
         else:
             x_ = append(self.data_store, x, axis=0)
         
-        self.R_idx_cur = self.R_idx(x_)
+        self.G_idx_cur = self.G_idx(x_)
         # p = self.check_significance()
         
-        if self.R_idx_last < self.R_idx_cur:
-            self.R_idx_last = self.R_idx_cur
+        if self.G_idx_last < self.G_idx_cur:
+            self.G_idx_last = self.G_idx_cur
             self.data_store = x_
             self.time_try_retrain = self.time_try_retrain + 1
             return 'More Sample'
@@ -58,7 +58,7 @@ class G_index():
             self.update_model()
             self.data_train = x_
             self.data_store = x
-            self.R_idx_last = self.R_idx(x)
+            self.G_idx_last = self.G_idx(x)
             self.time_try_retrain = 0
             return 'Retraining'
     
@@ -73,8 +73,8 @@ class G_index():
     def check_significance(self):
         f_p = []
         for i in range(self.num_test):
-            if self.R_idx_cur[i] != 0:
-                f_p.append(1 - f.cdf(self.R_idx_last[i] / self.R_idx_cur[i], self.num_test - 1, self.num_test - 1))
+            if self.G_idx_cur[i] != 0:
+                f_p.append(1 - f.cdf(self.G_idx_last[i] / self.G_idx_cur[i], self.num_test - 1, self.num_test - 1))
         f_p = [x for x in f_p if x != 0]
         K = -2 * sum(log(array(f_p)))
         chi2_p_value = 1 - chi2.cdf(K, 2 * len(f_p))
