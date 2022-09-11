@@ -17,8 +17,8 @@ settings = {
         'my_limit': 200000
         }
 
-path_packet = '..//data//.csv'
-path_label = '..//data//.npy'
+path_packet = 'data//packets.csv'
+path_label = 'data//label.npy'
 
 vec = settings['vector']
 my_limit = settings['my_limit']
@@ -71,10 +71,10 @@ for i_run in range(num_run):
             num_released = i_packet + 1
             
     stop = time.time()
-    if s:
-        ENIDrift.save()
-        if not vec:
-            FE.save()
+    # if s:
+    #     ENIDrift.save()
+    #     if not vec:
+    #         FE.save()
     print("Time elapsed for round "+str(i_run)+": "+str(stop-start)+" seconds")
     
     
