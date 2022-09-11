@@ -16,8 +16,8 @@ settings = {
         'vector': False
         }
 
-path_label = 'labels.npy'
-path_packet = 'packets.csv'
+path_label = '..//data//labels.npy'
+path_packet = '..//data//packets.csv'
 num_run = settings['num_run']
 release_speed = settings['release_speed']
 lamd = settings['lamda']
