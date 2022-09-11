@@ -53,12 +53,12 @@ class ENIDRIFTtrain():
                     # print("Bad generation Set: when update normal class...")
                 self.G_idx_normal.clear()
                 self.normal_set = array([])
-                print("Overflow normal")
+                # print("Overflow normal")
             else:
                 if self.G_idx_normal.check(self.normal_set) == 'generate':
                     rrr, data_temp = self.G_idx_normal.get()
                     self.G_idx_listt.append(rrr)
-                    print('normal generation'+str(data_temp.shape))
+                    # print('normal generation'+str(data_temp.shape))
                     self.detector.generate('normal', data_temp)
                 self.normal_set = array([])
         
