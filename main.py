@@ -18,7 +18,7 @@ settings = {
         }
 
 path_packet = 'data//packets.csv'
-path_label = 'data//label.npy'
+path_label = 'data//labels.npy'
 
 vec = settings['vector']
 my_limit = settings['my_limit']
