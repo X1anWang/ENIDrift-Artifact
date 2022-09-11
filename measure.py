@@ -84,7 +84,7 @@ def evaluate(x, y, window=10000):
             result[i, 7] = sqrt(result[i, 5] * result[i, 2] / (result[i, 2]+result[i, 1]))
     
     
-    
+    """
     plt.plot(arange(num), result[:, 0], label="tp")
     plt.plot(arange(num), result[:, 1], label="fp")
     plt.plot(arange(num), result[:, 2], label="tn")
@@ -108,7 +108,7 @@ def evaluate(x, y, window=10000):
     plt.cla()
     plt.clf()
     plt.close()
-        
+    """
     
     return result
 
@@ -149,5 +149,5 @@ def overall(x, y):
     temp9 = sqrt(temp_9*temp5)
     print("G-mean: "+str(temp9))
     
-    save("result//overall_result.npy", [temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp_9, temp9])
+    save("result_overall_result.npy", [temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp_9, temp9])
     

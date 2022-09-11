@@ -49,8 +49,8 @@ for i_run in range(num_run):
 
         stop = time.time()
         print("Time elapsed for round "+str(i_run)+": "+str(stop-start)+" seconds")
-        save("result//prediction.npy", prediction)
+        save("prediction.npy", prediction)
         # result: tp, fp, tn, fn, f1, gmean
         result = evaluate(prediction, label)
-        save("result//result.npy", result)
+        save("result.npy", result)
         overall(prediction, label)

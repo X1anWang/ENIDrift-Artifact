@@ -37,7 +37,7 @@ lamd = settings['lamda']
 delt = settings['delta']
 incre = settings['incremental']
 s = settings['save']
-label = load(path_label)
+label = load(path_label)[-150000:]
 packets = read_csv(path_packet)
 
 if vec:
@@ -53,7 +53,7 @@ for i_run in range(num_run):
     num_released = 0
 
     start = time.time()
-    for i_packet in range(my_limit):
+    for i_packet in range(len(label)):
         
         if i_packet%10000 == 0:
             print(str(i_packet)+' processed...')
@@ -78,8 +78,8 @@ for i_run in range(num_run):
     print("Time elapsed for round "+str(i_run)+": "+str(stop-start)+" seconds")
     
     
-    save("result//prediction.npy", prediction)
+    save("result_prediction.npy", prediction)
     # result: tp, fp, tn, fn, f1, gmean
     result = evaluate(prediction, label[:my_limit])
-    save("result//metrics.npy", result)
+    save("result_metrics.npy", result)
     overall(prediction, label)
