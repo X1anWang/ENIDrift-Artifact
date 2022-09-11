@@ -16,15 +16,15 @@ settings = {
         'vector': False
         }
 
-path_label = '..//data//labels.npy'
-path_packet = '..//data//packets.csv'
+path_label = 'labels.npy'
+path_packet = 'packets.csv'
 num_run = settings['num_run']
 release_speed = settings['release_speed']
 lamd = settings['lamda']
 delt = settings['delta']
 incre = settings['incremental']
 s = settings['save']
-label = load(path_label)
+label = load(path_label)[-150000:]
 
 for i_run in range(num_run):
     ENIDrift = ENIDRIFTtrain(lamda = lamd, delta=delt, incremental=incre)
