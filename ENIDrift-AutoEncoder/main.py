@@ -24,7 +24,7 @@ lamd = settings['lamda']
 delt = settings['delta']
 incre = settings['incremental']
 s = settings['save']
-label = load(path_label)[-150000:]
+label = load(path_label)
 
 for i_run in range(num_run):
     ENIDrift = ENIDRIFTtrain(lamda = lamd, delta=delt, incremental=incre)
@@ -39,18 +39,18 @@ for i_run in range(num_run):
         if i_packet%50000 == 0:
             print(str(i_packet)+' processed...')
             
-            packet_extracted = FE.iP2Vrun().reshape(1, -1)
-            prediction.append(ENIDrift.predict(packet_extracted))
+        packet_extracted = FE.iP2Vrun().reshape(1, -1)
+        prediction.append(ENIDrift.predict(packet_extracted))
             
-            # Release labels
-            if i_packet % release_speed == 0:
-                ENIDrift.update(label[num_released:i_packet+1])
-                num_released = i_packet + 1
+        # Release labels
+        if i_packet % release_speed == 0:
+            ENIDrift.update(label[num_released:i_packet+1])
+            num_released = i_packet + 1
 
-        stop = time.time()
-        print("Time elapsed for round "+str(i_run)+": "+str(stop-start)+" seconds")
-        save("prediction.npy", prediction)
-        # result: tp, fp, tn, fn, f1, gmean
-        result = evaluate(prediction, label)
-        save("result.npy", result)
-        overall(prediction, label)
+    stop = time.time()
+    print("Time elapsed for round "+str(i_run)+": "+str(stop-start)+" seconds")
+    save("prediction.npy", prediction)
+    # result: tp, fp, tn, fn, f1, gmean
+    result = evaluate(prediction, label)
+    save("result.npy", result)
+    overall(prediction, label)

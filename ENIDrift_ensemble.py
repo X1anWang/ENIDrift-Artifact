@@ -109,7 +109,7 @@ class dual_ensemble():
         else:
             return 0
     
-    def retrain(self, target, x):
+    def generate(self, target, x):
         self.dual_normal.adjust(x, update=True)
             
     def save_classifier(self):

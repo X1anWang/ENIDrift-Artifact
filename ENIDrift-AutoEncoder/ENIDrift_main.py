@@ -31,6 +31,9 @@ class ENIDRIFTtrain():
     
     def update(self, y):
         
+        if not self.incremental:
+            return 0
+
         normal_temp = array([self.generate_temp[i_y] for i_y in range(y.shape[0]) if y[i_y] == 0])
         attack_temp = array([self.generate_temp[i_y] for i_y in range(y.shape[0]) if y[i_y] != 0])
 

@@ -37,7 +37,7 @@ lamd = settings['lamda']
 delt = settings['delta']
 incre = settings['incremental']
 s = settings['save']
-label = load(path_label)[-150000:]
+label = load(path_label)
 packets = read_csv(path_packet)
 
 if vec:
@@ -58,12 +58,8 @@ for i_run in range(num_run):
         if i_packet%10000 == 0:
             print(str(i_packet)+' processed...')
     
-        if vec:               
-            # Execute
-            prediction.append(ENIDrift.predict(vector_packet[i_packet,:].reshape(1, -1)))
-        else:
-            packet_extracted = FE.iP2Vrun().reshape(1, -1)
-            prediction.append(ENIDrift.predict(packet_extracted))
+        packet_extracted = FE.iP2Vrun().reshape(1, -1)
+        prediction.append(ENIDrift.predict(packet_extracted))
         
         # Release labels
         if i_packet % release_speed == 0:
