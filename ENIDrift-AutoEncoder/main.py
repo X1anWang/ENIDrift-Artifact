@@ -29,7 +29,9 @@ label = load(path_label)
 for i_run in range(num_run):
     ENIDrift = ENIDRIFTtrain(lamda = lamd, delta=delt, incremental=incre)
     FE = increPacket2Vectormain(path = path_packet, incremental=incre)
-        
+    
+    ENIDrift.loadpara()
+    FE.loadpara()
     prediction = []
     num_released = 0
     
