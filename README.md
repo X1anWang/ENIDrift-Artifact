@@ -43,7 +43,10 @@ ENIDrift is a fast and adaptive ensemble system for network intrusion detection 
 - scipy 1.7.1
 - joblib 1.1.0
 
-# Prepare Experiment
+# Experiment
+
+## Prepare
+
 ENIDrift is easy to deploy in most python-supported platforms. We give experiment steps and provide following commands for reference. The commands can help build the environment for a machine with unbuntu OS, git and anaconda tools.
 
 1. Configure python environment
@@ -55,7 +58,7 @@ conda create -n env_enidrift python=3.8
 conda activate env_enidrift
 ```
 
-Then, please download necessary python libraries (probably only pandas and scikit-learn 0.23.2)
+Then, please download necessary python libraries (probably mainly pandas and scikit-learn 0.23.2)
 
 ```shell
 conda install pandas -n env_enidrift
@@ -63,6 +66,7 @@ conda install -c cctbx202008 scikit-learn -n env_enidrift
 ```
 
 2. Download code
+
 Please use git to clone the Github repo, and enter it
 ```shell
 git clone https://github.com/X1anWang/ENIDrift-Artifact
@@ -70,7 +74,8 @@ cd ENIDrift-Artifact
 ```
 
 3. Download data
-The dataset and their labels can be accessed by [link](https://drive.google.com/file/d/1HqND_mvOynDFqS8iH0FO2WRvnFuJPj2B/view?usp=sharing) and [link](https://drive.google.com/file/d/1koy1UItBcjlZVtac_tGiCZSX7olwDPqC/view?usp=sharing). Please place them as packets.csv and labels.npy in a new directory named data. Command for reference
+
+We prepare [data](https://drive.google.com/file/d/1HqND_mvOynDFqS8iH0FO2WRvnFuJPj2B/view?usp=sharing) and corresponding [labels](https://drive.google.com/file/d/1koy1UItBcjlZVtac_tGiCZSX7olwDPqC/view?usp=sharing) for the experiment. Please save them as packets.csv and labels.npy in a new directory named data. Command for reference
 ```shell
 (Already in ENIDrift-Artifact directory)
 mkdir data
@@ -82,13 +87,13 @@ We use the tool, gdown, to help download the data from google drive to our platf
 pip install gdown
 ```
 
-And download the two files to the data directory (the link is a little different from the previous)
+And download the two files to the data directory (the links are different from the previous two)
 ```shell
 gdown https://drive.google.com/uc?id=1HqND_mvOynDFqS8iH0FO2WRvnFuJPj2B
 gdown https://drive.google.com/uc?id=1koy1UItBcjlZVtac_tGiCZSX7olwDPqC
 ```
 
-# Experiment: ENIDrift-PCA (30 min)
+## Experiment: ENIDrift-PCA (30 min)
 Since the data consists of 120,000 network packets, the experiment will end in 30 min. Please go back to the root directory of ENIDrift-Artifact from the data directory and run with python3
 ```shell
 cd ../
@@ -105,7 +110,7 @@ The last command is only for ENIDrift running on ubuntu Linux and we can read th
 vim record_ENIDriftPCA.txt
 ```
 
-# Supplementary experiment: ENIDrift-AutoEncoder (30 min)
+## Supplementary experiment: ENIDrift-AutoEncoder (30 min)
 ENIDrift-AE is another version of ENIDrift made of AutoEncoder. Please enter the ENIdrift-AutuoEncoder directory and run the main.py
 ```shell
 cd ENIDrift-AutoEncoder
