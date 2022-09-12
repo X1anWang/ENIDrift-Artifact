@@ -1,7 +1,7 @@
 from numpy import *
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+#import matplotlib
+#matplotlib.use('Agg')
+#import matplotlib.pyplot as plt
 
 def evaluate(x, y, window=10000):
     

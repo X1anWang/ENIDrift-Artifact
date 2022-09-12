@@ -60,7 +60,7 @@ class G_index():
             self.data_store = x
             self.G_idx_last = self.G_idx(x)
             self.time_try_retrain = 0
-            return 'Retraining'
+            return 'Training'
     
     def G_idx(self, x):
         result = self.model.pred(x)

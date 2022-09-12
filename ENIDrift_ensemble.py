@@ -91,8 +91,8 @@ class ensemble():
             temp = load('model//threshold.npy')
             self.threshold_list = list(temp)
         except:
-            print("No previous trained model...")
-            print("But its OK to train our new model....")
+            print("[info] No previous trained model for ENIDrift ensemble...")
+            print("[info] ENIDrift will train new model...")
 
 class dual_ensemble():
     

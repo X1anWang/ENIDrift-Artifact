@@ -78,19 +78,18 @@ class vector_dict:
             self.input_vec[t] = self.input_vec[t] - self.lr * grad / (self.input_vec_squared_grad[t] ** 0.5)
     
     def save_vec(self):
-        np.save('para//P2Vinput.npy', self.input_vec)
-        np.save('para//P2Vinputgrad.npy', self.input_vec_squared_grad)
-        np.save('para//P2Voutput.npy', self.output_vec)
-        np.save('para//P2Voutputgrad.npy', self.output_vec_squared_grad)
+        np.save('para//iP2Vinput.npy', self.input_vec)
+        np.save('para//iP2Vinputgrad.npy', self.input_vec_squared_grad)
+        np.save('para//iP2Voutput.npy', self.output_vec)
+        np.save('para//iP2Voutputgrad.npy', self.output_vec_squared_grad)
     
     def load_vec(self):
         try:
-            self.input_vec = np.load('para//P2Vinput.npy', allow_pickle=True).item()
-            self.input_vec_squared_grad = np.load('para//P2Vinputgrad.npy', allow_pickle=True).item()
-            self.output_vec = np.load('para//P2Voutput.npy', allow_pickle=True).item()
-            self.output_vec_squared_grad = np.load('para//P2Voutputgrad.npy', allow_pickle=True).item()
-            print("find parameter for P2V")
+            self.input_vec = np.load('para//iP2Vinput.npy', allow_pickle=True).item()
+            self.input_vec_squared_grad = np.load('para//iP2Vinputgrad.npy', allow_pickle=True).item()
+            self.output_vec = np.load('para//iP2Voutput.npy', allow_pickle=True).item()
+            self.output_vec_squared_grad = np.load('para//iP2Voutputgrad.npy', allow_pickle=True).item()
+            print("[info] find parameter for iP2V")
         except:
-            print('No Trained Parameter Provided...')
-            print('But Its OK to Run Without Previous Parameter...')
-        
+            print('[info] No Trained Parameter Provided for iP2V...')
+            print('[info] iP2V will Run Without Previous Parameter...')

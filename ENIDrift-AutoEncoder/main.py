@@ -26,6 +26,8 @@ incre = settings['incremental']
 s = settings['save']
 label = load(path_label)
 
+print("\n\n**********ENIDrift**********\n\n")
+
 for i_run in range(num_run):
     ENIDrift = ENIDRIFTtrain(lamda = lamd, delta=delt, incremental=incre)
     FE = increPacket2Vectormain(path = path_packet, incremental=incre)
@@ -50,9 +52,5 @@ for i_run in range(num_run):
             num_released = i_packet + 1
 
     stop = time.time()
-    print("Time elapsed for round "+str(i_run)+": "+str(stop-start)+" seconds")
-    save("prediction.npy", prediction)
-    # result: tp, fp, tn, fn, f1, gmean
-    result = evaluate(prediction, label)
-    save("result.npy", result)
+    print("[info] Time elapsed for round "+str(i_run)+": "+str(stop-start)+" seconds")
     overall(prediction, label)

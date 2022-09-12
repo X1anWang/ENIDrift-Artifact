@@ -115,10 +115,10 @@ class ensemble():
             temp = load("model//weight.npy")
             self.weight_list = list(temp)
             
-            print("Trained Models Found...")
+            print("[info] Trained Models Found...")
         except:
-            print("No Trained Models Found...")
-            print("But Its OK to Train New Models...")
+            print("[info] No Trained Models Found...")
+            print("[info] But Its OK to Train New Models...")
             return 0
         
         params = AE.dA_params(n_visible=self.n_dim, n_hidden=0, lr=self.lr, corruption_level=0, gracePeriod=0, hiddenRatio=self.hr)

@@ -43,6 +43,8 @@ packets = read_csv(path_packet)
 if vec:
     vector_packet = load(path_vector)
 
+print("\n\n**********ENIDrift**********\n\n")
+
 for i_run in range(num_run):
     ENIDrift = ENIDrift_train(lamda = lamd, delta=delt, incremental=incre)
     FE = increPacket2Vector_main(path = path_packet, incremental=incre)
@@ -56,7 +58,7 @@ for i_run in range(num_run):
     for i_packet in range(len(label)):
         
         if i_packet%10000 == 0:
-            print(str(i_packet)+' processed...')
+            print('[info] '+str(i_packet)+' processed...')
     
         packet_extracted = FE.iP2Vrun().reshape(1, -1)
         prediction.append(ENIDrift.predict(packet_extracted))
@@ -71,11 +73,6 @@ for i_run in range(num_run):
     #     ENIDrift.save()
     #     if not vec:
     #         FE.save()
-    print("Time elapsed for round "+str(i_run)+": "+str(stop-start)+" seconds")
-    
-    
+    print("[info] Time elapsed for round "+str(i_run)+": "+str(stop-start)+" seconds")
     save("result_prediction.npy", prediction)
-    # result: tp, fp, tn, fn, f1, gmean
-    result = evaluate(prediction, label[:my_limit])
-    save("result_metrics.npy", result)
     overall(prediction, label)

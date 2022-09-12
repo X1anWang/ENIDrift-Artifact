@@ -63,7 +63,7 @@ class increPacket2Vector:
     
     def next_packet(self):
         if self.limit <= self.n_processed:
-            print(str(self.n_processed)+" processed, P2V: off")
+            print(str(self.n_processed)+" processed, iP2V: off")
             return []
         else:
             return self.proc_packet()

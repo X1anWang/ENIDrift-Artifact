@@ -90,6 +90,6 @@ class vector_dict:
             self.output_vec = np.load('para//iP2Voutput.npy', allow_pickle=True).item()
             self.output_vec_squared_grad = np.load('para//iP2Voutputgrad.npy', allow_pickle=True).item()
         except:
-            print('No Trained Parameter Provided...')
-            print('But Its OK to Run Without Previous Parameter...')
+            print('[info] No Trained Parameter Provided...')
+            print('[info] But Its OK to Run Without Previous Parameter...')
         
