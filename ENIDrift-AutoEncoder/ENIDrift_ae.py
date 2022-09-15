@@ -5,6 +5,7 @@ import json
 
 class dA_params:
     def __init__(self,n_visible = 5, n_hidden = 3, lr=0.001, corruption_level=0.0, gracePeriod = 10000, hiddenRatio=None):
+
         self.n_visible = n_visible # num of units in visible (input) layer
         self.n_hidden = n_hidden # num of units in hidden layer
         self.lr = lr
@@ -14,6 +15,7 @@ class dA_params:
 
 class dA:
     def __init__(self, params, name):
+        
         self.name = name
         self.params = params
 
@@ -39,6 +41,7 @@ class dA:
 
 
     def get_corrupted_input(self, input, corruption_level):
+        
         assert corruption_level < 1
 
         return self.rng.binomial(size=input.shape,
@@ -47,13 +50,16 @@ class dA:
 
     # Encode
     def get_hidden_values(self, input):
+        
         return sigmoid(numpy.dot(input, self.W) + self.hbias)
 
     # Decode
     def get_reconstructed_input(self, hidden):
+        
         return sigmoid(numpy.dot(hidden, self.W_prime) + self.vbias)
 
     def train(self, x):
+        
         self.n = self.n + 1
         # update norms
         for iii in range(self.params.n_visible):
@@ -89,11 +95,13 @@ class dA:
 
 
     def reconstruct(self, x):
+        
         y = self.get_hidden_values(x)
         z = self.get_reconstructed_input(y)
         return z
 
     def execute(self, x): #returns MSE of the reconstruction of x
+        
         if self.n < self.params.gracePeriod:
             return 0.0
         else:
@@ -105,9 +113,11 @@ class dA:
 
 
     def inGrace(self):
+        
         return self.n < self.params.gracePeriod
     
     def save(self):
+        
         numpy.save(("model//"+str(self.name)+"thw.npy"), self.W)
         numpy.save(("model//"+str(self.name)+"thwprime.npy"), self.W_prime)
         numpy.save(("model//"+str(self.name)+"thhbias.npy"), self.hbias)
@@ -120,6 +130,7 @@ class dA:
         
     
     def load(self):
+        
         self.W = numpy.load(("model//"+str(self.name)+"thw.npy"))
         self.W_prime = numpy.load(("model//"+str(self.name)+"thwprime.npy"))
         self.hbias = numpy.load(("model//"+str(self.name)+"thhbias.npy"))

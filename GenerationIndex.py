@@ -7,6 +7,7 @@ from SubLearner import *
 class G_index():
     
     def __init__(self, lamda, delta, num_test=1000, kind='PCA', num_simulation=100, mute=True, ID='normal'):
+
         self.ID = ID
         self.delta = delta
         self.lamda = 0.3
@@ -24,6 +25,7 @@ class G_index():
     def check(self, x):
         
         if self.round == 0:
+
             self.round = self.round + 1
             self.data_store = x
             self.data_test = x[random.permutation(x.shape[0])[:self.num_test]]
@@ -63,6 +65,7 @@ class G_index():
             return 'Training'
     
     def G_idx(self, x):
+        
         result = self.model.pred(x)
         v = var(result)
         e = 1 - (sum(result)/len(result))
@@ -71,6 +74,7 @@ class G_index():
         return G
     
     def check_significance(self):
+
         f_p = []
         for i in range(self.num_test):
             if self.G_idx_cur[i] != 0:
@@ -82,15 +86,19 @@ class G_index():
         return chi2_p_value
     
     def get(self):
+
         return self.data_train
     
     def clear(self):
+
         self.data_store = array([])
         self.time_try_retrain = 0
     
     def update_model(self):
+
         self.model = SubLearn()
         self.model.train(self.data_test)
     
     def times(self):
+
         return self.time_try_retrain

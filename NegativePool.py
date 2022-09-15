@@ -3,6 +3,7 @@ from iP2Vutil import *
 
 class negative_pool:
     def __init__(self, a=0.75, mode = 'unigram-table', max_size=1e8, n_negative=5):
+
         self.a = a
         self.mode = mode
         self.max_size = int(max_size)
@@ -18,6 +19,7 @@ class negative_pool:
         # for self.mode == 'simple-window'
         
     def update(self, e_p):
+
         if self.mode == 'unigram-table':
             for field in e_p:
                 # update vocabulary
@@ -32,6 +34,7 @@ class negative_pool:
                 self.uni_update(field, pow(self.vocab_count[field], self.a) - pow(self.vocab_count[field]-1, self.a))
         
     def get(self):
+
         # the negative pool is empty
         if self.n_size <= 0:
             return []
@@ -45,6 +48,7 @@ class negative_pool:
         
          
     def uni_update(self, field, weight):
+        
         self.weight_sum += weight
         
         if self.n_size < self.max_size:

@@ -77,7 +77,9 @@ class ENIDrift_train():
         self.num_generate_temp = 0
     
     def save(self):
+        
         self.detector.save_classifier()
     
     def loadpara(self):
+        
         self.detector.load_classifier()

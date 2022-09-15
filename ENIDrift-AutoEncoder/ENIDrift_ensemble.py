@@ -7,6 +7,7 @@ import pickle
 class ensemble():
     
     def __init__(self, learner='PCA', threshold=0.80, alpha=0.05, limit=30, ID = 'normal', ttttt=30):
+
         self.learner = 'PCA'
         self.threshold = threshold
         self.alpha = alpha
@@ -26,6 +27,7 @@ class ensemble():
         self.weight_mat = []
         
     def sub_predict(self, x):
+        
         pred_raw = 0
         
         for i in range(len(self.detector_pool)):

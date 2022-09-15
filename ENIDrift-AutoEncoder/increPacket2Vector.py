@@ -5,6 +5,7 @@ import VectorDict
 
 class increPacket2Vector:
     def __init__(self, path, lr, n_epoch, limit=50000000, dim=100, mode='unigram-table', a=0.75, n_negative=5, sgd='adagrad', kind='input', max_size_np=1e8):
+
         # initiate parameters
         self.n_processed = 0 # the number of packets that have been processed
         self.n_epoch = n_epoch
@@ -18,10 +19,12 @@ class increPacket2Vector:
         self.load_data(path)
         
     def load_data(self, p):
+
         self.packets = pd.read_csv(p, dtype=str)
         self.limit = self.packets.shape[0]
         
     def preproc_packet(self, p_idx):
+
         srcIP = self.packets['srcIP'][p_idx]
         dstIP = self.packets['dstIP'][p_idx]
         if srcIP < dstIP:
@@ -34,6 +37,7 @@ class increPacket2Vector:
                 self.packets['len'][p_idx], self.packets['IPtype'][p_idx]]
         
     def proc_packet(self):
+
         # preprocess and update vocabulary
         ext_packet = self.preproc_packet(self.n_processed)
         self.vec_dict.update(ext_packet)
@@ -58,6 +62,7 @@ class increPacket2Vector:
         return self.vec_dict.get(ext_packet[0])
     
     def next_packet(self):
+
         if self.limit <= self.n_processed:
             print(str(self.n_processed)+" processed, P2V: off")
             return []
@@ -65,7 +70,9 @@ class increPacket2Vector:
             return self.proc_packet()
 
     def sav(self):
+
         self.vec_dict.save_vec()
     
     def loa(self):
+        
         self.vec_dict.load_vec()

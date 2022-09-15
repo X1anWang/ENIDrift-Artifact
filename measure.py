@@ -83,7 +83,6 @@ def evaluate(x, y, window=10000):
         else:
             result[i, 7] = sqrt(result[i, 5] * result[i, 2] / (result[i, 2]+result[i, 1]))
     
-    
     """
     plt.plot(arange(num), result[:, 0], label="tp")
     plt.plot(arange(num), result[:, 1], label="fp")
@@ -113,6 +112,7 @@ def evaluate(x, y, window=10000):
     return result
 
 def Err1(x):
+    
     e = sum(ones(x.shape)-x)
     return e
 

@@ -111,13 +111,16 @@ def evaluate(x, y, window=10000):
     return result
 
 def Err1(x):
+
     e = sum(ones(x.shape)-x)
     return e
 
-def Err2():    
+def Err2(): 
+
     return 1
 
 def overall(x, y):
+    
     try:
         num = x.shape[0]
     except:

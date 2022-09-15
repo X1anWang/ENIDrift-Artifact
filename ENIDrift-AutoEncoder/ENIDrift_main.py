@@ -6,6 +6,7 @@ class ENIDRIFTtrain():
     
     def __init__(self, lamda=None, delta=None, size=[700, 5, 700, 5],
                  num_test=10, learner='PCA', mute=True, incremental=True, ttt=30):
+
         self.incremental = incremental
         self.G_idx_normal = G_index(lamda[0], delta[0], num_test = size[0], ID='normal')
         self.generate_size_normal = [size[0], size[1]]
@@ -21,6 +22,7 @@ class ENIDRIFTtrain():
         self.G_idx_listt = []
         
     def predict(self, x):
+
         if self.num_generate_temp != 0:
             self.generate_temp = append(self.generate_temp, x, axis=0)
         else:
@@ -81,10 +83,13 @@ class ENIDRIFTtrain():
         self.num_generate_temp = 0
     
     def save(self):
+
         self.detector.save_classifier()
     
     def loadpara(self):
+        
         self.detector.load()
     
     def ret_para(self):
+        
         return self.G_idx_listt, self.detector.retsyspara()

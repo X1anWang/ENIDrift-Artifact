@@ -5,6 +5,7 @@ import numpy as np
 class increPacket2Vector_main():
     
     def __init__(self, path, incremental):
+
         self.path = path
         self.lr = 0.05
         self.epoch = 1
@@ -25,7 +26,9 @@ class increPacket2Vector_main():
         return np.array(vector)
     
     def loadpara(self):
+
         self.ip2v.loa()
     
     def save(self):
+        
         self.ip2v.sav()

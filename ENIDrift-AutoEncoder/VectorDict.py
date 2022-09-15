@@ -3,6 +3,7 @@ from iP2Vutil import *
 
 class vector_dict:
     def __init__(self, dim=100, lr=0.1, mode='adagrad', kind='input'):
+
         self.input_vec = dict()
         self.output_vec = dict()
         self.lr = lr
@@ -18,6 +19,7 @@ class vector_dict:
         self.output_vec_squared_grad = dict()
         
     def update(self, packet):
+
         for field in packet:
             # if has not been initialized yet
             if not self.input_vec.__contains__(field):
@@ -30,6 +32,7 @@ class vector_dict:
                     self.output_vec_squared_grad[field] = 0
         
     def get(self, x):
+
         if self.kind == 'input':
             return self.input_vec[x]
         elif self.kind == 'output':
@@ -38,6 +41,7 @@ class vector_dict:
             return self.input_vec[x] + self.output_vec[x]
         
     def gradient_descendent(self, t, c, n):
+
         # using sgd
         if self.mode == 'sgd':
             # predict positive sample and sgd for its output_vec
@@ -78,12 +82,14 @@ class vector_dict:
             self.input_vec[t] = self.input_vec[t] - self.lr * grad / (self.input_vec_squared_grad[t] ** 0.5)
     
     def save_vec(self):
+
         np.save('para//iP2Vinput.npy', self.input_vec)
         np.save('para//iP2Vinputgrad.npy', self.input_vec_squared_grad)
         np.save('para//iP2Voutput.npy', self.output_vec)
         np.save('para//iP2Voutputgrad.npy', self.output_vec_squared_grad)
     
     def load_vec(self):
+        
         try:
             self.input_vec = np.load('para//iP2Vinput.npy', allow_pickle=True).item()
             self.input_vec_squared_grad = np.load('para//iP2Vinputgrad.npy', allow_pickle=True).item()

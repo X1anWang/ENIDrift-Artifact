@@ -69,6 +69,7 @@ class ensemble():
                     self.weight_list[i] = self.weight_list[i] * decay
                 
     def save_pcas(self, name):
+
         for i in range(len(self.detector_pool)):
             joblib.dump(self.detector_pool[i], ("model//"+str(i)+'thpca.m'))
         save('model//weight.npy', self.weight_list)
@@ -77,9 +78,11 @@ class ensemble():
         save('model//num.npy', temp)
     
     def get_num(self):
+
         return len(self.detector_pool)
     
     def load_pca(self):
+        
         try:
             temp = load('model//num.npy')
             num = temp[0]
@@ -97,10 +100,12 @@ class ensemble():
 class dual_ensemble():
     
     def __init__(self, learner='PCA', max_sublearner=30):
+        
         self.learner = learner
         self.dual_normal = ensemble(limit = max_sublearner)
     
     def predict(self, x):
+
         prob_n = self.dual_normal.sub_predict(x)
         # attack
         if prob_n <= 0:
@@ -110,13 +115,17 @@ class dual_ensemble():
             return 0
     
     def generate(self, target, x):
+
         self.dual_normal.adjust(x, update=True)
             
     def save_classifier(self):
+        
         self.dual_normal.save_pcas('normal')
     
     def ensembleupdate(self, x):
+        
         self.dual_normal.adjust(x, update=False)
     
     def load_classifier(self):
+        
         self.dual_normal.load_pca()
