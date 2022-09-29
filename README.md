@@ -118,5 +118,17 @@ python3 main.py
 (or nohup python3 -u main.py >> record_ENIDriftAE.txt 2>&1 &)
 ```
 
+# Possible error
+
+## KeyError
+If the program prompts following key error, please check if the key work selection in increPacket2Vector.py match the .csv file of the input data.
+```shell
+  File "/lib/python3.8/site-packages/pandas/core/frame.py", line 3505, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 3631, in get_loc
+    raise KeyError(key) from err
+KeyError: 'XXXXXXX'
+```
+
 # Contact
 If you have any questions about ENIDrift, please feel free to contact Sean (xwanggj@connect.hku.hk).
