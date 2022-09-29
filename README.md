@@ -121,7 +121,7 @@ python3 main.py
 # Possible error
 
 ## KeyError
-If the program prompts following key error, please check if the key work selection in increPacket2Vector.py match the .csv file of the input data.
+If the program prompts following key error, please check if the key work selection in line 39 of increPacket2Vector.py match the .csv file of the input data.
 ```shell
   File "/lib/python3.8/site-packages/pandas/core/frame.py", line 3505, in __getitem__
     indexer = self.columns.get_loc(key)
