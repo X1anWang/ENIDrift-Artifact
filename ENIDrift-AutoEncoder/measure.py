@@ -144,8 +144,8 @@ def overall(x, y):
     temp8 = 2*temp5*temp6/(temp5+temp6) if (temp5+temp6)!=0 else 0
     print("F1: "+str(temp8))
     temp_9 = temp3/(temp3+temp2) if (temp3+temp2) != 0 else 0
-    print("Specity: "+str(temp_9))
+    #print("Specity: "+str(temp_9))
     temp9 = sqrt(temp_9*temp5)
-    print("G-mean: "+str(temp9))
+    #print("G-mean: "+str(temp9))
     
     save("result_overall_result.npy", [temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp_9, temp9])
