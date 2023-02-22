@@ -131,4 +131,4 @@ KeyError: 'XXXXXXX'
 ```
 
 # Contact
-If you have any questions about ENIDrift, please feel free to contact Sean (xwanggj@connect.hku.hk).
+If you have any questions about ENIDrift, please feel free to contact Sean (x1anwang@outlook.com).
